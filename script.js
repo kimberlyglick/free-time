@@ -35,6 +35,10 @@ const curateActivityList = (activityList, numActivities) => {
   };
 }
 
+const randomTimes = () => {
+
+};
+
 userInputButton.addEventListener('click', () => {
   getUserInputs();
   getNumberOfActivities();
