@@ -35,9 +35,21 @@ const curateActivityList = (activityList, numActivities) => {
   };
 }
 
-const randomTimes = () => {
 
-};
+const randombetween = (min, max) => {
+  return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+const RandomTimes = (timeToFill, numActivities) => {
+  let r = [];
+  let currsum = 0;
+  for(let i=0; i<numActivities-1; i++) {
+      r[i] = randombetween(1, timeToFill-(numActivities-i-1)-currsum);
+      currsum += r[i];
+  }
+  r[numActivities-1] = timeToFill - currsum;
+  return r;
+}
 
 userInputButton.addEventListener('click', () => {
   getUserInputs();
