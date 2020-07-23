@@ -11,7 +11,7 @@ const allTheLists = {
   //randomActivities
   actitivies5: ["Draw Mike Wasouski", "Go on a mile plus bike ride",  "Stare into your own eyes in the mirror", "Nap", "Run around your house", "Make a paper airplane", "Make a pair of shorts from an old sheet", "Make a home movie using a plot from Plot Generator.", "Bake homemade pizza", "Dress up in the fanciest clothes you can find", "Host a black-tie video chat", "Host a black-tie garden walk", "Write a coronavirus parody of your favourite song", "Build a toothpick bridge"],
   //enter your own activities
-  activies6: []
+  activities6: []
 }
 
 //binds html elements to variables
@@ -23,6 +23,7 @@ const display3 = document.getElementById('display-3');
 const display4 = document.getElementById('display-4');
 const display5 = document.getElementById('display-5');
 const display6 = document.getElementById('display-6');
+const display7 = document.getElementById('display-7');
 //buttons
 const userInputButton = document.getElementById("user-input-button");
 //user inputs
@@ -30,18 +31,24 @@ let userName = "";
 let userTotalTime = 0;
 let userMinimumTime = 0;
 let userActivityListChoice = [];
+let userOwnActivities = [];
 //functions to use in the main function (modules?)
 let returnedToDoList = [];
 let numberOfActivities = 0;
 let timeBlocks = [];
-let testSave = "";
+let listSelect = "";
 
 const getUserInputs = () => {
   userName = document.getElementById('your-name').value;
   userTotalTime = parseInt(document.getElementById('minutes-to-fill').value, 10);
   userMinimumTime = parseInt(document.getElementById('minimum-time-block').value, 10);
-  testSave = document.getElementById('activity-option-set').value;
-  userActivityListChoice = allTheLists[testSave];
+  listSelect = document.getElementById('activity-option-set').value;
+  if (listSelect == "activities6") {
+    userOwnActivities = document.getElementById('type-your-activities').value;
+    allTheLists.activities6 = userOwnActivities.split(',');
+
+  };
+  userActivityListChoice = allTheLists[listSelect];
 }
 
 const getNumberOfActivities = () => {
@@ -86,8 +93,13 @@ userInputButton.addEventListener('click', () => {
   display3.innerHTML = "number of activities: " + (numberOfActivities);
   display4.innerHTML = 'Activity List:<br>' + (returnedToDoList.join("<br>"));
   display5.innerHTML = `Time blocks ${timeBlocks}`;
-  display6.innerHTML = `You chose ${userActivityListChoice} activity list`;
+  display6.innerHTML = `Your full list includes ${userActivityListChoice}`;
 })
+
+
+
+
+
 
 
 
