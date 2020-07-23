@@ -23,7 +23,6 @@ const display3 = document.getElementById('display-3');
 const display4 = document.getElementById('display-4');
 const display5 = document.getElementById('display-5');
 const display6 = document.getElementById('display-6');
-const display7 = document.getElementById('display-7');
 //buttons
 const userInputButton = document.getElementById("user-input-button");
 //user inputs
@@ -46,7 +45,6 @@ const getUserInputs = () => {
   if (listSelect == "activities6") {
     userOwnActivities = document.getElementById('type-your-activities').value;
     allTheLists.activities6 = userOwnActivities.split(',');
-
   };
   userActivityListChoice = allTheLists[listSelect];
 }
