@@ -8,7 +8,7 @@ const enterActivities = [];
 
 //binds html elements to variables
 //displays
-const displayYourName = document.getElementById('display-name');
+const displayUserName = document.getElementById('display-name');
 const display1 = document.getElementById('display-1');
 const display2 = document.getElementById('display-2');
 const display3 = document.getElementById('display-3');
@@ -17,9 +17,9 @@ const display5 = document.getElementById('display-5');
 //buttons
 const userInputButton = document.getElementById("user-input-button");
 //user inputs
-let yourName = "";
-let minutesToFill = 0;
-let minimumTimeBlock = 0;
+let userName = "";
+let userTotalTime = 0;
+let userMinimumTime = 0;
 
 //functions to use in the main function (modules?)
 let returnedToDoList = [];
@@ -27,13 +27,13 @@ let numberOfActivities = 0;
 let timeBlocks = [];
 
 const getUserInputs = () => {
-  yourName = document.getElementById('your-name').value;
-  minutesToFill = parseInt(document.getElementById('minutes-to-fill').value, 10);
-  minimumTimeBlock = parseInt(document.getElementById('minimum-time-block').value, 10);
+  userName = document.getElementById('your-name').value;
+  userTotalTime = parseInt(document.getElementById('minutes-to-fill').value, 10);
+  userMinimumTime = parseInt(document.getElementById('minimum-time-block').value, 10);
 }
 
 const getNumberOfActivities = () => {
-    const maxActivities = Math.floor(minutesToFill / minimumTimeBlock);
+    const maxActivities = Math.floor(userTotalTime / userMinimumTime);
     numberOfActivities = Math.floor(Math.random()*maxActivities)+1;
   }
 
@@ -64,15 +64,16 @@ userInputButton.addEventListener('click', () => {
   getNumberOfActivities();
   returnedToDoList = [];
   curateActivityList(yourSavedActivities, numberOfActivities);
-  getTimeBlocks(minutesToFill, numberOfActivities);
+  getTimeBlocks(userTotalTime, numberOfActivities);
 
-  alert(yourName + " - please actually do what we tell you to. Otherwise what's the point?");
+  alert(userName + " - please actually do what we tell you to. Otherwise what's the point?");
   
-  displayYourName.innerHTML = `Time blocks ${timeBlocks}`;
-  display1.innerHTML = `minutes to fill: ${minutesToFill}`;
-  display2.innerHTML = "minimum time block: " + (minimumTimeBlock);
+  displayUserName.innerHTML = `Name: ${userName}`;
+  display1.innerHTML = `minutes to fill: ${userTotalTime}`;
+  display2.innerHTML = "minimum time block: " + (userMinimumTime);
   display3.innerHTML = "number of activities: " + (numberOfActivities);
   display4.innerHTML = 'Activity List:<br>' + (returnedToDoList.join("<br>"));
+  display5.innerHTML = `Time blocks ${timeBlocks}`;
 })
 
 
