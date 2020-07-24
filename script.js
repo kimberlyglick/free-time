@@ -57,7 +57,7 @@ const getNumberOfActivities = () => {
 const curateActivityList = (activityList, numActivities) => {
   for (let i = 0; i < numActivities; i++) {
       let rand = Math.floor(Math.random()*activityList.length);
-      returnedToDoList.push(`---${activityList[rand]}    !!!`);
+      returnedToDoList.push(activityList[rand]);
   };
 }
 
@@ -83,15 +83,11 @@ userInputButton.addEventListener('click', () => {
   curateActivityList(userActivityListChoice, numberOfActivities);
   getTimeBlocks(userTotalTime, numberOfActivities);
 
-  alert(userName + " - please actually do what we tell you to. Otherwise what's the point?");
+  // alert(userName + " - please actually do what we tell you to. Otherwise what's the point?");
   
-  displayUserName.innerHTML = `Name: ${userName}`;
-  display1.innerHTML = `minutes to fill: ${userTotalTime}`;
-  display2.innerHTML = "minimum time block: " + (userMinimumTime);
-  display3.innerHTML = "number of activities: " + (numberOfActivities);
-  display4.innerHTML = 'Activity List:<br>' + (returnedToDoList.join("<br>"));
-  display5.innerHTML = `Time blocks ${timeBlocks}`;
-  display6.innerHTML = `Your full list includes ${userActivityListChoice}`;
+
+  displayResults();
+  display3.innerHTML = `number of activities: ${numberOfActivities}`;
 })
 
 
@@ -99,6 +95,11 @@ userInputButton.addEventListener('click', () => {
 
 
 
-
-
+const displayResults = () => {
+  const resultsArray = [];
+  for (let i = 0; i < returnedToDoList.length; i++) {
+    resultsArray.push(`<li>Do ${returnedToDoList[i]} for ${timeBlocks[i]} minutes</li>`);
+  }
+  display5.innerHTML = resultsArray.join("<br>");
+}
 
