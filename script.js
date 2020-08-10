@@ -83,7 +83,7 @@ userInputButton.addEventListener('click', () => {
   curateActivityList(userActivityListChoice, numberOfActivities);
   getTimeBlocks(userTotalTime, numberOfActivities);
 
-  // alert(userName + " - please actually do what we tell you to. Otherwise what's the point?");
+  alert(userName + " - please actually do what we tell you to. Otherwise what's the point?");
   
 
   displayResults();
